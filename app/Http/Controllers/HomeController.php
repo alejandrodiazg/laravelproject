@@ -33,7 +33,7 @@ class HomeController extends Controller
         $navbar = Categories::where([['status', '1'],['is_featured', '1']])
         ->Paginate(3);
 
-        return view('home', compact('articles', 'navbar'));
+        return view('home.index', compact('articles', 'navbar'));
     }
 
     public function all()

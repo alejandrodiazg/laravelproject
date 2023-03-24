@@ -1,3 +1,18 @@
+@extends('layouts.base')
+
+@section('styles')
+
+<link rel="stylesheet" href="{{asset('css/manage_post/categories/css/article_category.css')}}">
+
+@endsection
+
+@section('title',  'blog')
+
+@section('content')
+
+@include('layouts.navbar')
+
+
 <div class="slogan">
     <div class="column1">
         <h2>BLOG</h2>
@@ -11,17 +26,22 @@
 </div>
 
 <div class="article-container">
+
     <!-- Listar artículos -->
+    @foreach ($articles as $article)
     <article class="article">
-        <img src="" class="img">
+        <img src="{{asset('storage/' . $article->image)}}" class="img">
         <div class="card-body">
             <a href="#">
-                <h2 class="title"></h2>
+                <h2 class="title">{{Str::limit($article->title, 60, '...')}}</h2>
             </a>
-            <p class="introduction"></p>
+            <p class="introduction">{{Str::limit($article->introduction, 100, '...')}}</p>
         </div>
     </article>
+    @endforeach
 </div>
 <div class="links-paginate">
-    
+    {{$articles->links()}}
 </div>
+
+@endsection

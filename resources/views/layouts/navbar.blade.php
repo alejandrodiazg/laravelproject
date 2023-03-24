@@ -11,9 +11,7 @@
                 </li>
             @endforeach
             
-        <li class="nav-item ">
-            <a href="#"></a>
-        </li>
+
 
         <li class="nav-item {{request()->routeIs('home.all') ? 'active' : ''}} ">
             <a href="{{route('home.all')}}">Todas las categorias</a>

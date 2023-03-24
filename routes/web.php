@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(); 
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
-Route::get('/all', [App\Http\Controllers\HomeController::class, 'index'])->name('home.all');
+Route::get('/all', [App\Http\Controllers\HomeController::class, 'all'])->name('home.all');
 
 Route::resource('articles', ArticleController::class)->names('articles');
 
@@ -38,7 +38,7 @@ Route::resource('Profiles', ProfileController::class)
 ->only('edit', 'update')
 ->names('Profiles');
 
-Route::get('Article/{category}', [Articlecontroller::class, 'show'])->name('articles.show');
+Route::get('Article/{articles}', [Articlecontroller::class, 'show'])->name('articles.show');
 
 Route::get('categories/{category}', [CategoryController::class, 'detail'])->name('categories.detail');
 

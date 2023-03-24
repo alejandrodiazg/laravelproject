@@ -71,7 +71,9 @@ class ArticleController extends Controller
     {
         //
 
+
         $comments = $articles->comments()->simplePaginate(5);
+
 
         return view('subscriber.articles.show' , compact('articles', 'comments'));
     
@@ -86,6 +88,7 @@ class ArticleController extends Controller
         $categories = Categories::select('id', 'name')
         ->where('status', '1')
         ->get();
+        
 
         return view('admin.articles.edit', compact('categories', 'articles'));
     }

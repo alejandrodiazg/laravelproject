@@ -28,20 +28,20 @@
 <div class="article-container">
 
     <!-- Listar artículos -->
-    @foreach ($articles as $article)
+    @foreach ($article as $articles)
     <article class="article">
-        <img src="{{asset('storage/' . $article->image)}}" class="img">
+        <img src="{{asset('storage/' . $articles->image)}}" class="img">
         <div class="card-body">
-            <a href="#">
-                <h2 class="title">{{Str::limit($article->title, 60, '...')}}</h2>
+            <a href="{{route('articles.show', $articles->slug)}}">
+                <h2 class="title">{{Str::limit($articles->title, 60, '...')}}</h2>
             </a>
-            <p class="introduction">{{Str::limit($article->introduction, 100, '...')}}</p>
+            <p class="introduction">{{Str::limit($articles->introduction, 100, '...')}}</p>
         </div>
     </article>
     @endforeach
 </div>
 <div class="links-paginate">
-    {{$articles->links()}}
+    {{$article->links()}}
 </div>
 
 @endsection

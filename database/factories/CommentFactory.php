@@ -25,7 +25,7 @@ class CommentFactory extends Factory
             'value' => $this->faker->numberBetween($min=1, $max=5),
             'description' => $this->faker->realText(255),
             'user_id' => User::all()->random()->id,
-            'article_id' => Articles::all()->random()->id,
+            'articles_id' => Articles::all()->random()->id,
         ];
     }
 }

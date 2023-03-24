@@ -26,14 +26,14 @@ class HomeController extends Controller
     public function index()
     {
 
-        $articles = Articles::where('status', '1')
+        $article = Articles::where('status', '1')
         ->orderBy('id', 'desc')
         ->simplePaginate(10);
 
         $navbar = Categories::where([['status', '1'],['is_featured', '1']])
         ->Paginate(3);
 
-        return view('home.index', compact('articles', 'navbar'));
+        return view('home.index', compact('article', 'navbar'));
     }
 
     public function all()

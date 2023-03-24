@@ -8,6 +8,7 @@ use App\Models\Articles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\VarDumper\VarDumper;
 
 class CommentController extends Controller
 {
@@ -18,7 +19,7 @@ class CommentController extends Controller
     {
         //
         $comments = DB::table('comments')
-        ->join('articles', 'comments.article_id', '=', 'articles.id')
+        ->join('articles', 'comments.articles_id', '=', 'articles.id')
         ->join('users', 'comments.user_id', '=', 'users.id')
         ->select('comments.value', 'comments.description', 'users.full_name', 'articles.title')
         ->where('user.id', Auth::user()->id)
@@ -43,18 +44,22 @@ class CommentController extends Controller
     public function store(CommentRequest $request)
     {
         //
+
+
         $result = Comment::where('user_id', Auth::user()->id)
-        ->where('article_id', $request->article_id)->exists();
+        ->where('articles_id', $request->articles_id)->exists();
 
-        $article = Articles::select('status', 'slug')->find($request->article_id);
+        
 
-        if(!$result and $article->status == 1){
+        $article = Articles::select('status', 'slug')->find($request->articles_id);
+
+        if($result == false and $article->status == 1){
             Comment::create([
 
                'value' => $request->value,
                'description' => $request->description,
                'user_id' => Auth::user()->id,
-               'article_id' => $request->article_id, 
+               'articles_id' => $request->articles_id, 
 
             ]);
             return redirect()->action([ArticleController::class, 'show'], [$article->slug]);
@@ -63,7 +68,6 @@ class CommentController extends Controller
             return redirect()->action([ArticleController::class, 'show'], [$article->slug])
             ->with('success-error', 'Solo puedes comentar una vez');
         }
-
 
 
     }

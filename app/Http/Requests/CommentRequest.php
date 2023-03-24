@@ -25,7 +25,7 @@ class CommentRequest extends FormRequest
             //
             'value' => 'required|numeric|min:1|max:5',
             'description' => 'required|max:255',
-            'article_id' => 'required',
+            'articles_id' => 'required',
         ];
     }
 }

@@ -3,7 +3,7 @@
 @section('styles')
 
 <link rel="stylesheet" href="{{asset('css/manage_post/post/css/article_show.css')}}">
-<link rel="stylesheet" href="{{asset('css/manage_post/post/comments/comments.css')}}">
+<link rel="stylesheet" href="{{asset('css/manage_post/comments/css/comments.css')}}">
 @endsection
 
 @section('title', 'Articulo')
@@ -13,38 +13,44 @@
 <div class="content-post">
 
     <div class="post-title line">
-        <h2 class="fw-bold"></h2>
+        <h2 class="fw-bold">{{$articles->title}}</h2>
     </div>
 
     <div class="post-introduction line">
-        <p></p>
+        <p>{!! $articles->introduction !!}</p>
     </div>
 
     <div class="post-author line">
-        <img src="" class="img-author">
+        <img src="{{$articles->user->profile->photos ? asset('storage/' . $articles->user->profile->photos) : asset('img/user-default.png')}}" class="img-author">
 
         <span>Autor:
-            <a href="#"></a>
+            <a href="#">{{$articles->user->full_name}}</a>
         </span>
     </div>
 
     <hr>
 
     <div class="post-image">
-        <img src="" alt="imagen" class="post-image-img">
+        <img src="{{asset('storage/' . $articles->image)}}" alt="imagen" class="post-image-img">
     </div>
 
-    <div class="post-body line"></div>
+    <div class="post-body line">{!! $articles->body !!}</div>
     <hr>
 </div>
 
 <div class="text-primary">
     <h2>Comentarios</h2>
+    @if (Auth::check())
+        @include('subscriber.comments.create')
+    @else
+    <p class="alert-post">Para comentar debe iniciar sesión</p>
+    @endif
 </div>
-
-<p class="alert-post">Para comentar debe iniciar sesión</p>
-
+@if (session('success-error'))
 <div class="text-danger text-center">
-    <p class="fs-5"></p>
+    <p>{{session('success-error')}}</p>
 </div>
+    
+@endif
+
 @endsection

@@ -6,7 +6,9 @@
 <link rel="stylesheet" href="{{asset('css/manage_post/comments/css/comments.css')}}">
 @endsection
 
-@section('title', 'Articulo')
+@section('title')
+<title>Articulo</title>
+@endsection
     
 @section('content')
     
@@ -40,6 +42,7 @@
 
 <div class="text-primary">
     <h2>Comentarios</h2>
+
     @if (Auth::check())
         @include('subscriber.comments.create')
     @else
@@ -50,6 +53,8 @@
 <div class="text-danger text-center">
     <p>{{session('success-error')}}</p>
 </div>
+
+@include('subscriber.comments.show')
     
 @endif
 

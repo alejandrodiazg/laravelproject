@@ -1,18 +1,39 @@
+@extends('layouts.base')
+
+@section('styles')
+
+<link rel="stylesheet" href="{{asset('css/manage_post/categories/css/article_category.css')}}">
+
+@endsection
+
+@section('title')
+<title>Todas las Categorias</title>
+@endsection
+
+@section('content')
+
+@include('layouts.navbar')
+
 <div class="text-primary">
     <h2>TODAS LAS CATEGORIAS</h2>
 </div>
 
 <div class="article-container">
     <!-- Listar categorías -->
+    @foreach ($categories as $category)
     <article class="article category">
-        <img src="#" class="img">
+        <img src="{{asset('storage/' . $category->image)}}" class="img">
         <div class="card-body">
-            <a href="#">
-                <h2 class="title category fs-4"></h2>
+            <a href="{{asset(route('categories.detail' , $category->slug))}}">
+                <h2 class="title category fs-4">{{$category->name}}</h2>
             </a>
         </div>
     </article>
+    @endforeach
 </div>
 
-<div class="links-paginate">    
+<div class="links-paginate">
+    {{$categories->links()}}    
 </div>
+
+@endsection

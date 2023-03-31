@@ -4,7 +4,9 @@
 <link rel="stylesheet" href="{{asset('css/login/css/login.css')}}">
 @endsection
 
-@section('title', 'Crear Cuenta')
+@section('title')
+<title>Crear Cuenta</title>
+@endsection
 
 @section('content')
 

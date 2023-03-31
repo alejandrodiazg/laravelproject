@@ -40,7 +40,7 @@ Route::resource('Profiles', ProfileController::class)
 
 Route::get('Article/{articles}', [Articlecontroller::class, 'show'])->name('articles.show');
 
-Route::get('categories/{category}', [CategoryController::class, 'detail'])->name('categories.detail');
+Route::get('categories/{categories}', [CategoryController::class, 'detail'])->name('categories.detail');
 
 Route::post('comment/', [CommentController::class, 'store'])->name('comment.store');
 

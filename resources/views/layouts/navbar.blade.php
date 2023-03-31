@@ -4,7 +4,7 @@
             <a href="{{route('home.index')}}">Todo</a></li>   
             
             @foreach ($navbar as $category)
-                <li class="nav-item {!!(Request::path()) == 'category/' . $category->slug ? 'active' : '' !!}">
+                <li class="nav-item {!!(Request::path()) == 'categories/' . $category->slug ? 'active' : '' !!}">
 
                     <a href="{{route('categories.detail', $category->slug)}}">{{$category->name}}</a>
 

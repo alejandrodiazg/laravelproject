@@ -6,7 +6,9 @@
 
 @endsection
 
-@section('title',  'blog')
+@section('title')
+<title>Blog</title>
+@endsection
 
 @section('content')
 

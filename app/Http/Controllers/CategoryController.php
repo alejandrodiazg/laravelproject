@@ -109,8 +109,11 @@ class CategoryController extends Controller
     }
 
     public function detail(Categories $categories){
-        $Articles = Articles::where([
-            ['category_id', $categories->id()],
+
+        $this->authorize('published',  $categories);
+
+        $articles = Articles::where([
+            ['category_id', $categories->id],
             ['status', '1']
         ])
     ->orderBy('id', 'desc')

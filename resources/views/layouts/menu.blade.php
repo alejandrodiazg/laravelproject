@@ -13,6 +13,7 @@
         </ul>
 
         @else
+        
         <div class="dropdown">
             <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" 
                data-bs-toggle="dropdown" aria-expanded="false">
@@ -27,7 +28,7 @@
                 <li><a class="dropdown-item"
                         href="#">Perfil</a></li>
                 
-                <li><a class="dropdown-item" href="#">Ir al admin</a></li>
+                <li><a class="dropdown-item" href="{{route('admin.index')}}">Ir al admin</a></li>
                 
                 <li>
                     <form id="logout-form" action="{{ route('logout')}}" method="POST" style="display: none;">

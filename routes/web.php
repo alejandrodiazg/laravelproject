@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
@@ -44,6 +45,7 @@ Route::get('categories/{categories}', [CategoryController::class, 'detail'])->na
 
 Route::post('comment/', [CommentController::class, 'store'])->name('comment.store');
 
+Route::get('admin/', [AdminController::class, 'Index'])->name('admin.index');
 
 // Articles
 

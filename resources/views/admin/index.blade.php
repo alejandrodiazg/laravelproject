@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <p></p>
+    <p>Hola! {{Auth::user()->full_name}}</p>
 @endsection
 
 @section('css')

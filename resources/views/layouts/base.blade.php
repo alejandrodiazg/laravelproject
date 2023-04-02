@@ -42,8 +42,8 @@
     @yield('scripts')
 
     <!-- Scripts de bootstrap -->
-    <script src="{{'js/app.js'}}"></script>
-    <script src="{{'../js/app.js'}}"></script>
+    @vite('resources/js/app.js')
+
 </body>
 
 </html>

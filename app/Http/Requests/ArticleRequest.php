@@ -22,8 +22,8 @@ class ArticleRequest extends FormRequest
     public function rules(): array
     {
 
-        $slug = request()->isMethod('put') ? 'required|unique:articles,slug,' . $this->id : 'required|unique:articles';
-        $image = request()->isMethod('put') ? 'nullable|mimes:jpeg,jpg,png,giv,svg|max:8000' : 'required:image';
+        $slug = request()->isMethod('PUT') ? "required|unique:articles,slug, {$this->articles->id}" : 'required|unique:articles';
+        $image = request()->isMethod('PUT') ? 'nullable|mimes:jpeg,jpg,png,giv,svg|max:8000' : 'required:image';
 
         return [
             //
@@ -35,6 +35,16 @@ class ArticleRequest extends FormRequest
             'status' => 'required|boolean',
             'category_id' => 'required|integer',
 
+        ];
+    }
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'Debe ingresar un titulo',
+            'body.required' => 'Debe ingresar informacion',
+            'introduction.required' => 'Debe ingresar introduccion',
+            'category_id' => 'Debe ingresar una categoria',
+            'image.required' => 'Debe ingresar imagen'
         ];
     }
 }

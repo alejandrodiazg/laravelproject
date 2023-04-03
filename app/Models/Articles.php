@@ -18,7 +18,7 @@ class Articles extends Model
     }
 
     public function categories() {
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo(Categories::class, 'category_id');
     }
 
     public function comments() {

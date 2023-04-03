@@ -25,7 +25,12 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 Route::get('/all', [App\Http\Controllers\HomeController::class, 'all'])->name('home.all');
 
-Route::resource('articles', ArticleController::class)->names('articles');
+Route::resource('articles', ArticleController::class)->names('articles')
+->except('edit','update');
+
+Route::put('Article/{articles}', [Articlecontroller::class, 'update'])->name('articles.update');
+
+Route::get('Article/{articles}/edit', [Articlecontroller::class, 'edit'])->name('articles.edit');
 
 Route::resource('Categories', CategoryController::class)
 ->except('show')

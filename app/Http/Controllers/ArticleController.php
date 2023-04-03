@@ -21,8 +21,10 @@ class ArticleController extends Controller
         $user = Auth::user();
         $articles = Articles::where('user_id', $user->id)
         ->orderBy('id', 'desc')
-        ->simplePaginate(10);
+        ->simplePaginate(5);
+
         return view('admin.articles.index', compact('user', 'articles'));
+
 
     }
 
@@ -59,7 +61,7 @@ class ArticleController extends Controller
 
         Articles::create($article);
 
-        return redirect()->action(ArticleController::class, 'index')
+        return redirect()->action([ArticleController::class, 'index'])
         ->with('success-create', 'Articulo creado con exito');
 
     }
@@ -116,7 +118,7 @@ class ArticleController extends Controller
         ]);
         
         
-        return redirect()->action(ArticleController::class, 'index')
+        return redirect()->action([ArticleController::class, 'index'])
         ->with('success-update', 'Articulo actualizado con exito');
     }
 

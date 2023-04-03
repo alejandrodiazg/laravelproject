@@ -26,10 +26,13 @@
 
             <tbody>
                 
+                @foreach ($categories as $category)
+                    
                 <tr>
-                    <td></td>
+                    <td>{{$category->name}}</td>
                     <td>
                         <input type="checkbox" name="status" id="status" class="form-check-input ml-3"
+                        {{$category->status === 'true' ? "checked=checked" : 'checked=""'}}
                             disabled>
                     </td>
                     <td>
@@ -38,7 +41,7 @@
                     </td>
 
 
-                    <td width="10px"><a href="#"
+                    <td width="10px"><a href="{{route('categories.edit', $category->slug)}}"
                             class="btn btn-primary btn-sm mb-2">Editar</a></td>
                    
                     <td width="10px">
@@ -48,6 +51,7 @@
                     </td>
 
                 </tr>
+                @endforeach
             </tbody>
         </table>
 

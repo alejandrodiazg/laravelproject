@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Categories;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,13 +29,15 @@ Route::get('/all', [App\Http\Controllers\HomeController::class, 'all'])->name('h
 Route::resource('articles', ArticleController::class)->names('articles')
 ->except('edit','update');
 
-Route::put('Article/{articles}', [Articlecontroller::class, 'update'])->name('articles.update');
+Route::get('Article/{articles}', [Articlecontroller::class, 'update'])->name('articles.update');
 
 Route::get('Article/{articles}/edit', [Articlecontroller::class, 'edit'])->name('articles.edit');
 
 Route::resource('Categories', CategoryController::class)
-->except('show')
+->except('show', 'edit')
 ->names('categories');
+
+Route::get('Categories/{categories}/edit', [Categorycontroller::class, 'edit'])->name('categories.edit');
 
 Route::resource('Comments', CommentController::class)
 ->only('index', 'destroy')

@@ -16,7 +16,7 @@
 
             <div class="form-group">
                 <label for="">Nombre</label>
-                <input type="text" class="form-control" id="name" name='name' placeholder="Nombre de la categoría" value="">
+                <input type="text" class="form-control" id="name" name='name' placeholder="Nombre de la categoría" value="{{$categories->name}}">
 
                 @error('name')
                 <span class="text-danger">

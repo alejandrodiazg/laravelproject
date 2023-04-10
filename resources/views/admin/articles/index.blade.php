@@ -14,6 +14,15 @@
             <li>{!!Session::get('success-create')!!}</li>
         </ul>
     </div>
+
+@if (Session::has('success-update'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!!Session::get('success-update')!!}</li>
+        </ul>
+    </div>
+@endif
+
 @endif
 
 <div class="card">
@@ -51,7 +60,9 @@
                             class="btn btn-primary btn-sm mb-2">Editar</a></td>
 
                     <td width="5px">
-                        <form action="#" method="POST">
+                        <form action="{{route('articles.destroy', $article->slug)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
                             <input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
                         </form>
                     </td>

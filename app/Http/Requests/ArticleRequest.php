@@ -44,7 +44,9 @@ class ArticleRequest extends FormRequest
             'body.required' => 'Debe ingresar informacion',
             'introduction.required' => 'Debe ingresar introduccion',
             'category_id' => 'Debe ingresar una categoria',
-            'image.required' => 'Debe ingresar imagen'
+            'image.required' => 'Debe ingresar imagen',
+            'slug.required' => 'Debe ingresar un slug',
+            'status.required' => 'Debe elegir un estado'
         ];
     }
 }

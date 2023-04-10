@@ -88,6 +88,7 @@ class ArticleController extends Controller
     public function edit(Articles $articles)
     {
         //
+        $this->authorize('view', $articles);
         $categories = Categories::select('id', 'name')
         ->where('status', '1')
         ->get();
@@ -137,7 +138,7 @@ class ArticleController extends Controller
 
         $articles->delete();
 
-        return redirect()->action(ArticleController::class, 'index')
+        return redirect()->action([ArticleController::class, 'index'])
         ->with('success-delete', 'Articulo eliminado con exito');
 
     }

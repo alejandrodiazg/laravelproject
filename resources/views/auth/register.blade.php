@@ -20,7 +20,7 @@
                 value="{{old('full_name')}}" 
                 autofocus>
                 @error('full_name')
-                <span class="{{alert-red}}">
+                <span class="alert-red">
                     <span>
                         {{$message}}
                     </span>
@@ -35,7 +35,7 @@
                 value="{{old('email')}}" 
                 autofocus>
                 @error('email')
-                <span class="{{alert-red}}">
+                <span class="alert-red">
                     <span>
                         {{$message}}
                     </span>
@@ -47,7 +47,7 @@
             <input type="password" name="password" placeholder="Contraseña">
 
             @error('password')
-            <span class="{{alert-red}}">
+            <span class="alert-red">
                 <span>
                     {{$message}}
                 </span>

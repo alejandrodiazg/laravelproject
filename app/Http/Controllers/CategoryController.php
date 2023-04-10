@@ -76,6 +76,7 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Categories $categories)
     {
         //
+        
         if ($request->hasFile('image')){
             File::delete(public_path('storage/' . $categories->image));
             $categories['image'] = $request->file('image')->store('categories');
@@ -100,12 +101,14 @@ class CategoryController extends Controller
     public function destroy(Categories $categories)
     {
         //
-        if($categories->hash_file('image')){
-            File::deletePath(public_path('storage/' . $categories->image));
+        if($categories->image){
+            File::delete(public_path('storage/' . $categories->image));
+        }
             $categories->delete();
+            
             return redirect()->action([CategoryController::class, 'index'])
             ->with('success-delete', 'categoria eliminada con exito');
-        }
+       
     }
 
     public function detail(Categories $categories){

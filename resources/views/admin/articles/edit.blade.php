@@ -95,9 +95,11 @@
                     <input class="form-check-input ml-2" type="radio" name='status' id="status" value="1">
                 </div>
 
+                @error('status')
                 <span class="text-danger">
-                    <span>*</span>
+                    <span>{{$message}}</span>
                 </span>
+                @enderror
             </div>
 
             <div class="form-group">
@@ -111,9 +113,11 @@
                 </select>
 
                 
+                @error('category_id')
                 <span class="text-danger">
-                    <span>*</span>
+                    <span>{{$message}}</span>
                 </span>
+                @enderror
                 
             </div>
             <input type="submit" value="Modificar artículo" class="btn btn-primary">
@@ -122,7 +126,7 @@
 </div>
 @endsection
 
-@section('js'){
+@section('js')
 <script src="{{asset('vendor\jQuery-Plugin-stringToSlug-1.3\jquery.stringToSlug.js')}}"></script>
 
 <script>
@@ -134,7 +138,7 @@
   });
 });
 </script>
-}
+
 
 <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
 

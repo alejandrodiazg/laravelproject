@@ -22,6 +22,7 @@ class ArticlesPolicy
     public function view(User $user, Articles $articles): bool
     {
         //
+        return $user->id == $articles->user_id;
     }
 
     /**

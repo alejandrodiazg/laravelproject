@@ -21,8 +21,8 @@ class CommentController extends Controller
         $comments = DB::table('comments')
         ->join('articles', 'comments.articles_id', '=', 'articles.id')
         ->join('users', 'comments.user_id', '=', 'users.id')
-        ->select('comments.value', 'comments.description', 'users.full_name', 'articles.title')
-        ->where('user.id', Auth::user()->id)
+        ->select('comments.id','comments.value', 'comments.description', 'users.full_name', 'articles.title')
+        ->where('users.id', Auth::user()->id)
         ->orderBy('articles.id', 'desc')
         ->get();
 
@@ -99,8 +99,10 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Comment $comment)
+    public function destroy(Comment $Comment)
     {
         //
+        $Comment->delete();
+        return redirect()->action([CommentController::class, 'index'])->with('success-delete', 'Se ha eliminado el comentario');
     }
 }

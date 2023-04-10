@@ -21,17 +21,14 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        $slug = request()->isMethod('put') ? 'required|unique:articles, slug' . $this->id : 'required|unique:articles';
-        $image = request()->isMethod('put') ? 'nullable|mimes:jpg, png, jpeg' . $this->id : 'required:image';
+        $slug = request()->isMethod('PUT') ? "required|unique:articles,slug, {$this->categories->id}" : 'required|unique:categories';
+        $image = request()->isMethod('PUT') ? 'nullable|mimes:jpg, png, jpeg' . $this->id : 'required:image';
 
         return [
-           'title' => 'required|min:5|max:255',
+           'name' => "required|unique:categories,name, {$this->categories->id}|min:3|max:255",
            'slug' => $slug,
-           'introduction' => 'required|min:10|max:255',
-           'body' => 'required',
            'image' => $image,
            'status' => 'required|boolean',
-           'category_id' => 'required|integer'
         ];
     }
 }

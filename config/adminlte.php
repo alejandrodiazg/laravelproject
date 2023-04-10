@@ -333,9 +333,9 @@ return [
         ],
         [
             'text' => 'Comentarios',
-            'url'  => 'comments',
+            'url'  => 'Comments',
             'icon' => 'fas fa-poll',
-            'active' => ['comments*'],
+            'active' => ['omments*'],
         ],
         [
             'text' => 'change_password',

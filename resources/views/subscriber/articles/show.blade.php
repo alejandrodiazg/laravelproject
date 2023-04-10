@@ -53,9 +53,9 @@
 <div class="text-danger text-center">
     <p>{{session('success-error')}}</p>
 </div>
+@endif
+
 
 @include('subscriber.comments.show')
-    
-@endif
 
 @endsection

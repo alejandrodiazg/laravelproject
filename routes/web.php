@@ -27,15 +27,21 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/all', [App\Http\Controllers\HomeController::class, 'all'])->name('home.all');
 
 Route::resource('articles', ArticleController::class)->names('articles')
-->except('edit','update');
+->except('edit','update', 'destroy');
 
-Route::get('Article/{articles}', [Articlecontroller::class, 'update'])->name('articles.update');
+Route::put('Article/{articles}', [Articlecontroller::class, 'update'])->name('articles.update');
+
+Route::delete('Article/{articles}', [Articlecontroller::class, 'destroy'])->name('articles.destroy');
 
 Route::get('Article/{articles}/edit', [Articlecontroller::class, 'edit'])->name('articles.edit');
 
 Route::resource('Categories', CategoryController::class)
-->except('show', 'edit')
+->except('show', 'edit', 'update', 'destroy')
 ->names('categories');
+
+Route::delete('Categories/{categories}', [Categorycontroller::class, 'destroy'])->name('categories.destroy');
+
+Route::put('Categories/{categories}', [Categorycontroller::class, 'update'])->name('categories.update');
 
 Route::get('Categories/{categories}/edit', [Categorycontroller::class, 'edit'])->name('categories.edit');
 

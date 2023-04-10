@@ -8,6 +8,15 @@
 
 @section('content')
 
+@if (Session::has('success-delete'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!!Session::get('success-delete')!!}</li>
+        </ul>
+    </div>
+    
+@endif
+
 <div class="card">
     <div class="card-body">
         <table class="table table-striped">
@@ -21,18 +30,21 @@
             </thead>
 
             <tbody>
-              
+                @foreach ($comments as $comment)
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$comment->title}}</td>
+                    <td>{{$comment->description}}</td>
+                    <td>{{$comment->full_name}}</td>
 
-                    
+                   
                     <td width="10px">
-                        <form action="#" method="POST">
+                        <form action="{{route('Comments.destroy', $comment->id)}}" method="POST">
+                          @csrf
+                            @method('DELETE')
                             <input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
                         </form>
                     </td>
+                    @endforeach
             </tbody>
     </div>
 </div>

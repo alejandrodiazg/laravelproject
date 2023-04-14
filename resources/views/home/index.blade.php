@@ -14,6 +14,13 @@
 
 @include('layouts.navbar')
 
+@if (Session::has('success-update'))
+<div class="alert alert-success">
+    <ul>
+        <li>{!!Session::get('success-update')!!}</li>
+    </ul>
+</div>
+@endif
 
 <div class="slogan">
     <div class="column1">

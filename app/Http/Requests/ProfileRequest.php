@@ -25,7 +25,7 @@ class ProfileRequest extends FormRequest
             //
             'full_name' => 'required',
             'email' => 'required',
-            'photo' => 'nullable|mimes:jpeg, jpg, png',
+            'photos' => 'nullable|mimes:jpeg, jpg, png',
         ];
     }
 }

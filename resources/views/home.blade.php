@@ -8,11 +8,23 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                    @if (Session::has('status'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            {!! Session::get('status') !!}
                         </div>
                     @endif
+                    
+                    @if (Session::has('success-update'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!!Session::get('success-update')!!}</li>
+        </ul>
+    </div>
+@endif
+
+                    
+
+                    
 
                     {{ __('You are logged in!') }}
                 </div>

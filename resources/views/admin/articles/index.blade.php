@@ -15,13 +15,14 @@
         </ul>
     </div>
 
+@endif
+
 @if (Session::has('success-update'))
     <div class="alert alert-success">
         <ul>
             <li>{!!Session::get('success-update')!!}</li>
         </ul>
     </div>
-@endif
 
 @endif
 

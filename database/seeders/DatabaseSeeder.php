@@ -32,10 +32,12 @@ class DatabaseSeeder extends Seeder
         Storage::makeDirectory('articles');
         Storage::makeDirectory('categories');
 
+        $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
         Categories::factory(10)->create();
         Articles::factory(10)->create();
         Comment::factory(10)->create();
+  
   
 
     }

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Models\Articles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CommentRequest;
 use Symfony\Component\VarDumper\VarDumper;
 
 class CommentController extends Controller
@@ -25,7 +25,8 @@ class CommentController extends Controller
         ->where('users.id', Auth::user()->id)
         ->orderBy('articles.id', 'desc')
         ->get();
-
+    
+        // var_dump($comments);
         return view('admin.comments.index', compact('comments'));
     }
 

@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\ProfileController;
 use App\Models\Categories;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,11 @@ Route::resource('Comments', CommentController::class)
 Route::resource('Profiles', ProfileController::class)
 ->only('edit', 'update')
 ->names('Profiles');
+
+
+Route::resource('User', UserController::class)
+->except('create', 'store', 'show')
+->names('users');
 
 Route::get('Article/{articles}', [Articlecontroller::class, 'show'])->name('articles.show');
 

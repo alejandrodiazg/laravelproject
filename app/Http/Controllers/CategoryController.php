@@ -44,11 +44,10 @@ class CategoryController extends Controller
 
         $category = $request->all();
 
-        if($request->hasfile('image')){
-
-            $category['image']->$request->file('image')->store('categories');
-
+        if ($request->hasFile('image')){
+            $category['image'] = $request->file('image')->store('categories');
         }
+       
 
         Categories::create($category);
 

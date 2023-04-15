@@ -326,20 +326,26 @@ return [
             'active' => ['articles*'],
         ],
         [
-            'text' => 'Categories',
+            'text' => 'Categorias',
             'url'  => 'Categories',
-            'icon' => 'fas fa-poll',
+            'icon' => 'fas fa-list',
             'active' => ['categories*'],
         ],
         [
             'text' => 'Comentarios',
             'url'  => 'Comments',
-            'icon' => 'fas fa-poll',
-            'active' => ['omments*'],
+            'icon' => 'fas fa-comments',
+            'active' => ['comments*'],
+        ],
+        [
+            'text' => 'Usuarios',
+            'url'  => 'User',
+            'icon' => 'fas fa-users',
+            'active' => ['user*'],
         ],
         [
             'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'url'  => 'password/reset',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [

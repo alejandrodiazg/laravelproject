@@ -23,9 +23,10 @@ class CategoryRequest extends FormRequest
     {
         $slug = request()->isMethod('PUT') ? "required|unique:articles,slug, {$this->categories->id}" : 'required|unique:categories';
         $image = request()->isMethod('PUT') ? 'nullable|mimes:jpg, png, jpeg' . $this->id : 'required:image';
+        $name = request()->isMethod('PUT') ?  "required|unique:categories,name, {$this->categories->id}|min:3|max:255" : 'required|unique:categories';
 
         return [
-           'name' => "required|unique:categories,name, {$this->categories->id}|min:3|max:255",
+           'name' => $name,
            'slug' => $slug,
            'image' => $image,
            'status' => 'required|boolean',

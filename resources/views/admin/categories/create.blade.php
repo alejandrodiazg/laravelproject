@@ -10,8 +10,8 @@
 
 <div class="card">
     <div class="card-body">
-        <form method="POST" action="#" enctype="multipart/form-data">
-
+        <form method="POST" action="{{route('categories.store')}}" enctype="multipart/form-data">
+            @csrf
             <div class="form-group">
                 <label for="">Nombre</label>
                 <input type="text" class="form-control" id="name" name='name' placeholder="Nombre de la categoría"
@@ -92,5 +92,22 @@
         </form>
     </div>
 </div>
+@endsection
+
+@section('js')
+
+
+<script src="{{asset('vendor\jQuery-Plugin-stringToSlug-1.3\jquery.stringToSlug.js')}}"></script>
+
+<script>
+    $(document).ready( function() {
+  $("#name").stringToSlug({
+    setEvents: 'keyup keydown blur',
+    getPut: '#slug',
+    space: '-'
+  });
+});
+</script>
+
 @endsection
 

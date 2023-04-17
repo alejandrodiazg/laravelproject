@@ -349,6 +349,13 @@ return [
             'can' => 'users.index',
         ],
         [
+            'text' => 'Roles',
+            'url'  => 'roles',
+            'icon' => 'fas fa-users',
+            'active' => ['roles*'],
+            'can' => 'roles.index',
+        ],
+        [
             'text' => 'change_password',
             'url'  => 'password/reset',
             'icon' => 'fas fa-fw fa-lock',

@@ -3,6 +3,7 @@
 use App\Models\Categories;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
@@ -68,6 +69,10 @@ Route::post('comment/', [CommentController::class, 'store'])->name('comment.stor
 Route::get('admin/', [AdminController::class, 'Index'])
 ->middleware('can:admin.index')
 ->name('admin.index');
+
+Route::resource('roles', RoleController::class)
+->except('show')
+->names('roles');
 
 // Articles
 

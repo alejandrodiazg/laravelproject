@@ -65,7 +65,9 @@ Route::get('categories/{categories}', [CategoryController::class, 'detail'])->na
 
 Route::post('comment/', [CommentController::class, 'store'])->name('comment.store');
 
-Route::get('admin/', [AdminController::class, 'Index'])->name('admin.index');
+Route::get('admin/', [AdminController::class, 'Index'])
+->middleware('can:admin.index')
+->name('admin.index');
 
 // Articles
 

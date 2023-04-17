@@ -12,6 +12,11 @@ use Symfony\Component\VarDumper\VarDumper;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:comments.index')->only('index');
+        $this->middleware('can:comments.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      */

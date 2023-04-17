@@ -317,6 +317,7 @@ return [
             'icon'        => 'fas fa-pager',
             'label'       => 4,
             'label_color' => 'success',
+            'can' => 'admin.index',
         ],
         ['header' => 'Panel'],
         [
@@ -324,24 +325,28 @@ return [
             'url'  => 'articles',
             'icon' => 'fas fa-poll',
             'active' => ['articles*'],
+            'can' => 'articles.index',
         ],
         [
             'text' => 'Categorias',
             'url'  => 'Categories',
             'icon' => 'fas fa-list',
             'active' => ['categories*'],
+            'can' => 'categories.index',
         ],
         [
             'text' => 'Comentarios',
             'url'  => 'Comments',
             'icon' => 'fas fa-comments',
             'active' => ['comments*'],
+            'can' => 'comments.index',
         ],
         [
             'text' => 'Usuarios',
             'url'  => 'User',
             'icon' => 'fas fa-users',
             'active' => ['user*'],
+            'can' => 'users.index',
         ],
         [
             'text' => 'change_password',
